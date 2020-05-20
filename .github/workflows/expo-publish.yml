@@ -19,6 +19,7 @@ jobs:
     runs-on: windows-2019
     steps:
     - name: Display the path
+    - uses: actions/checkout@v2
       run: |
         for /r "docs" %i in (*.docx) do pandoc -s --self-contained --template=GitHub.html5 --track-changes=accept -f docx+styles -t html "%~fi" -o "%~dpni.html"
         for /R %~dp0 %i in (*.html) do call :repl "%i"
