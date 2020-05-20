@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   setup-pandoc:
-    name: Setup and run pandoc
+    name: Setup pandoc
     runs-on: windows-2019
     steps:
       - uses: actions/checkout@v2
@@ -14,9 +14,18 @@ jobs:
         with:
           pandoc-version: '2.9.2'
       - run: echo "# Test" | pandoc -t html
+  run-pandoc:
+    name: Run pandoc
+    needs: [setup-pandoc]    
+    runs-on: windows-2019
+    steps:
+      - uses: actions/checkout@v2
+      - name: convert docx to html
+        run: Get-ChildItem -Recurse -Filter *.docx | ForEach-Object { pandoc -s --self-contained --template=GitHub.html5 --track-changes=accept -f docx+styles -t html -o ($_.FullName + '.html') $_.FullName }
+        shell: pwsh    
   publish:
     name: Install and publish
-    needs: [setup-pandoc]
+    needs: [setup-pandoc, run-pandoc]
     runs-on: windows-2019
     steps:
       - uses: actions/checkout@v2
