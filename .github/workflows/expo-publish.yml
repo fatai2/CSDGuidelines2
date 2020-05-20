@@ -14,17 +14,6 @@ jobs:
         with:
           pandoc-version: '2.9.2'
       - run: echo "# Test" | pandoc -t html
-      - name: convert and move the files
-        run: |
-          set parent = %~dp0
-          for /r "docs" %i in (*.docx) do pandoc -s --self-contained --template=GitHub.html5 --track-changes=accept -f docx+styles -t html "%~fi" -o "%~dpni.html"
-          for /r %parent%  %i in (*.html) do call :repl "%i"
-          goto :eof 
-          :repl
-          set "_fn=%~nx1"
-          ren %1 "%_fn: =_%"
-          for /r "docs" %i in (*.html) do move "%~dpni.html" www
-        shell: cmd 
   publish:
     name: Install and publish
     needs: [setup-pandoc]
