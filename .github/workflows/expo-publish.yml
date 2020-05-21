@@ -36,14 +36,21 @@ jobs:
         if: ${{ failure() }}
         run: |
           git pull origin master       
-      - uses: actions/setup-node@v1
+      - name: setup-node
+        if: ${{ always() }}
+        uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - uses: expo/expo-github-action@v5
+      - name: expo publish
+        if: ${{ always() }}
+        uses: expo/expo-github-action@v5
         with:
           expo-version: 3.x
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
           expo-cache: true
-      - run: yarn install
-      - run: expo publish
+      - name: actual running
+        if: ${{ always() }}
+        run: |
+          yarn install
+          expo publish
