@@ -14,12 +14,6 @@ jobs:
         with:
           pandoc-version: '2.9.2'
       - run: echo "# Test" | pandoc -t html
-  run-pandoc:
-    name: Run pandoc
-    needs: [setup-pandoc]    
-    runs-on: windows-2019
-    steps:
-      - uses: actions/checkout@v2
       - name: convert docx to html
         run: |
           Get-ChildItem -Path ".\docs" -Filter *.docx | ForEach-Object { pandoc -s --self-contained --track-changes=accept --quiet -f docx+styles -t html -o ($_.FullName + '.html') $_.FullName }
