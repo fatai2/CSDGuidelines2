@@ -1,7 +1,5 @@
 # CSD Guidelines
 ![Expo Publishing](https://github.com/fatai2/CSDGuidelines2/workflows/Expo%20Publishing/badge.svg)
- 
-# CSD Guidelines
 
 The CSD Guidelines app is designed to provide offline access to the updated guidelines of the Clinical Services Department of the MRCG. It does this by providing over-the-air updates whenever any change in this repository is committed. This minimizes the number of new builds of apps that need to be released.
 
