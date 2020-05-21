@@ -21,7 +21,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: convert docx to html
-        run: Get-ChildItem -Recurse -Filter *.docx | ForEach-Object { pandoc -s --self-contained --template=GitHub.html5 --track-changes=accept -f docx+styles -t html -o ($_.FullName + '.html') $_.FullName }
+        run: |
+          Get-ChildItem -Path ".\docs" -Filter *.docx | ForEach-Object { pandoc -s --self-contained --template=GitHub.html5 --track-changes=accept -f docx+styles -t html -o ($_.FullName + '.html') $_.FullName }
+          Get-ChildItem -Path ".\docs" -Filter *.html | Rename-Item -NewName { $_.name -replace " ","_" }
+          Get-ChildItem -Path ".\docs\*.html" -Recurse | Move-Item -Destination ".\www"
         shell: pwsh    
   publish:
     name: Install and publish
