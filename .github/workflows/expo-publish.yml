@@ -18,12 +18,13 @@ jobs:
         run: |
           Get-ChildItem -Path ".\docs" -Filter *.docx | ForEach-Object { pandoc -s --self-contained --template=GitHub.html5 --track-changes=accept --quiet -f docx+styles -t html -o ($_.FullName + '.html') $_.FullName }
           Get-ChildItem -Path ".\docs" -Filter *.html | Rename-Item -NewName { $_.name -replace " ","_" }
-          Get-ChildItem -Path ".\docs\*.html" -Recurse | Move-Item -Destination ".\www"
+          Get-ChildItem -Path ".\docs" -Filter *.html | Rename-Item -Force -NewName { $_.FullName -replace ".docx.","." }
+          Get-ChildItem -Path ".\docs\*.html" -Recurse | Move-Item -Force -Destination ".\www"
         shell: powershell
       - name: Commit files  # transfer the new html files back into the repository
         run: |
           git config --local user.name ${{ github.repository_owner }}
-          git config --local user.email "drfatai998@gmail.com"
+          git config --local user.email ${{ github.actor }}
           git add .
           git commit -m "Updating the repository GitHub html pages in the www folder"
       - name: Push changes  # push the output folder to your repo
