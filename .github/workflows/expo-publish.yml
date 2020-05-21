@@ -31,7 +31,11 @@ jobs:
         uses: ad-m/github-push-action@master  
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true         
+          force: true  
+      - name: My backup step  # if commit fails because files are even with remote repo
+        if: ${{ failure() }}
+        run: |
+          git pull origin master       
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
