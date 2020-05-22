@@ -33,7 +33,9 @@ The Android app for this version is already built and deployed. To build a new v
 * iOS: `expo build:ios -t archive`
 
 These builds will depend on App store credentials that need to have been previously uploaded to Expo and tied to the Expo user acccount.
+App builds may take a few hours to complete!
 
+**Remember to replace the build commands in the [Workflow] file with the original `expo publish` line!** This can be also be done from Github Desktop software porgram (revert the app building commit)
 
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
