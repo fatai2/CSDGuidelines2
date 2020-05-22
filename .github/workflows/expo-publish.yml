@@ -27,7 +27,8 @@ jobs:
         run: |
           git config --local user.name fatai2
           git config --local user.email 31743893+fatai2@users.noreply.github.com
-          git commit -m "Updating the repository GitHub html pages in the www folder" -a
+          git add .
+          git commit -m "Updating the repository GitHub html pages in the www folder"
       - name: Push changes  # push the output folder to your repo
         uses: ad-m/github-push-action@master  
         with:
