@@ -27,7 +27,11 @@ The CSD Guidelines incorporates/ is a modification of a number of open source pr
 
 ### Building apps
 
-The Android app for this version is already built and deployed. To build a new version of the app or an iOS version, replace the final expo publish line in the [.github/workflow/expo-publish.yml] file with the appropriate expo command 
+The Android app for this version is already built and deployed. To build a new version of the app or an iOS version, replace the final `expo publish` line in the [Workflow] file with the appropriate expo command from the [Expo documention] e.g 
+- for Android: build APK `expo build:android -t apk` , Android App Bundle `expo build:android -t app-bundle` (preferred due to smaller app sizes), or 
+- iOS `expo build:ios -t archive`
+
+These builds will depend on App store credentials that need to have been previously uploaded to Expo and tied to the Expo user acccount.
 
 
 
@@ -40,3 +44,5 @@ The Android app for this version is already built and deployed. To build a new v
    [React Native]: <https://reactnative.dev/>
    [Github Actions]: <https://github.com/actions>
    [GitHub Pandoc HTML5 Template]: <https://github.com/tajmone/pandoc-goodies/tree/master/templates/html5/github>
+   [Workflow]: </.github/workflow/expo-publish.yml>
+   [Expo documention]: <https://docs.expo.io/distribution/building-standalone-apps/#3-start-the-build>
