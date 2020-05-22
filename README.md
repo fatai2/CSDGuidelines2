@@ -5,14 +5,15 @@ The CSD Guidelines app is designed to provide offline access to the updated guid
 
 # Usage
 
-  - Upload a properly formatted CSD Guideline in WORD (docx. only) into the "docs" folder and watch it magically convert into an HTML file stored in the "www" folder
-    -- Pictures in the Word document should be saved as PNG format and re-inserted into the docx. file before uploading. This will prevent the converter from using the default EMF format that will NOT display in the app.
-    -- Simplify tables
-    -- Simplify complex charts and diagrams: This can be done by grouping components of each diagram into single objects, saving them as PNG files, delete the diagram and insert the picture file to replace it in the document.
-    -- File names should be in the standard CSD Guidelines format
-  - Changes to be highlighted in the "What's New" section of the app can be saved in text files in the "changes" folder under "www". Each new file should contain the date and the contents of the change.  Save with incrementing numbers e.g "1.txt", "2.txt"
-  - Commit changes to "master"
-  - - Congratulations! Changes made will now reflect on users' apps!
+* Upload a properly formatted CSD Guideline in Word (docx. only) into the **docs** folder, commit the change to *master* and watch it magically convert into an HTML file stored in the **www** folder
+  * Pictures in the Word document should be saved as *PNG* format and re-inserted into the docx. file before uploading. This will prevent the converter from using the default *EMF* picture format used by Word documents. *EMF* pics will **not** display in the app.
+  * Simplify complex tables
+  * Simplify complex charts and diagrams: This can be done by: grouping components of each diagram into single objects, saving them as *PNG* picture files, delete the diagram and insert the picture file to replace it in the document.
+  * File names should be in the standard CSD Guidelines format
+* Changes to be highlighted in the *What's New* section of the app can be saved in text files in the **changes** subfolder of the **www** folder.
+  * Each new file should contain the date and the contents of the change. Save the new filename as an incrementing in number e.g save as *"5.txt"* if the last change made previously was *"4.txt"*
+* PS: Commit all changes to *master* 
+  * Congratulations! Changes made will now reflect on users' apps!
 
 ### Tech
 
@@ -28,8 +29,8 @@ The CSD Guidelines incorporates/ is a modification of a number of open source pr
 ### Building apps
 
 The Android app for this version is already built and deployed. To build a new version of the app or an iOS version, replace the final `expo publish` line in the [Workflow] file with the appropriate expo command from the [Expo documention] e.g 
-- for Android: build APK `expo build:android -t apk` , Android App Bundle `expo build:android -t app-bundle` (preferred due to smaller app sizes), or 
-- iOS `expo build:ios -t archive`
+* for Android: build APK `expo build:android -t apk` , Android App Bundle `expo build:android -t app-bundle` (preferred due to smaller app sizes), or 
+* iOS: `expo build:ios -t archive`
 
 These builds will depend on App store credentials that need to have been previously uploaded to Expo and tied to the Expo user acccount.
 
